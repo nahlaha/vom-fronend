@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import type { IUser } from "../../core";
 import EditUser from "./EditUser.vue";
 import DeleteUserModal from "./DeleteUserModal.vue";
@@ -12,11 +12,6 @@ const props = defineProps<Props>();
 const viewEditForm = ref(false)
 const viewDeleteModal = ref(false)
 
-// watch(props.user, () => {
-//     if (props.user) {
-//         editedUser.value = props.user;
-//     }
-// })
 </script>
 
 
@@ -29,9 +24,9 @@ const viewDeleteModal = ref(false)
         <b-col>{{ user.description }}</b-col>
         <b-col>
             <b-button @click="viewEditForm = true">edit</b-button>
-            <b-button @click="viewDeleteModal=true">delete</b-button>
+            <b-button @click="viewDeleteModal = true">delete</b-button>
         </b-col>
     </b-row>
     <EditUser :user="props.user" :viewForm="viewEditForm" />
-    <DeleteUserModal :viewModal="viewDeleteModal" :userId="user.id"/>
+    <DeleteUserModal :viewModal="viewDeleteModal" :userId="user.id" />
 </template>

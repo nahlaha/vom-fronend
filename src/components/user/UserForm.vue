@@ -29,7 +29,7 @@ watch(props, () => {
 
 })
 function requiredIf() {
-    return !props.isCreate;
+    return props.isCreate;
 }
 const alpha = helpers.regex(/^[a-zA-Z]*$/)
 const validationRules = {
