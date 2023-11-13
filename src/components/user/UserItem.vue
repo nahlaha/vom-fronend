@@ -11,7 +11,7 @@ interface Props {
 const props = defineProps<Props>();
 const viewEditForm = ref(false)
 const viewDeleteModal = ref(false)
-
+const emit = defineEmits(['updateGrid'])
 </script>
 
 
@@ -27,6 +27,6 @@ const viewDeleteModal = ref(false)
             <b-button variant="danger" size="sm" @click="viewDeleteModal = true">delete</b-button>
         </b-col>
     </b-row>
-    <EditUser :user="props.user" :viewForm="viewEditForm" />
-    <DeleteUserModal :viewModal="viewDeleteModal" :userId="user.id" />
+    <EditUser :user="props.user" :viewForm="viewEditForm" @updateHandler="$emit('updateGrid')" />
+    <DeleteUserModal :viewModal="viewDeleteModal" :userId="user.id" @deleteHandler="$emit('updateGrid')" />
 </template>

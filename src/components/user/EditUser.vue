@@ -12,6 +12,7 @@ interface Props {
 const props = defineProps<Props>()
 const _viewModal = ref(false)
 const form = ref<IUserForm>({})
+const emit = defineEmits(['updateHandler'])
 
 watch(props, () => {
     _viewModal.value = props.viewForm;
@@ -30,6 +31,8 @@ async function update(updatedForm: IUserForm) {
         updatedForm.phone_number && formData.set('phone_number', updatedForm.phone_number)
         await updateUser(form.value.id ?? 0, formData)
         _viewModal.value = false
+        emit('updateHandler');
+
     } catch (error) {
         console.log(error)
     }

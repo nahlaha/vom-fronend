@@ -10,6 +10,8 @@ interface Props {
 
 const props = defineProps<Props>()
 const _viewModal = ref(false)
+const emit = defineEmits(['createHandler'])
+
 
 watch(props, () => {
     _viewModal.value = props.viewForm;
@@ -27,7 +29,7 @@ async function create(form: IUserForm) {
         form.phone_numbe && formData.set('phone_number', form.phone_number)
         await createUser(formData)
         _viewModal.value = false
-
+        emit('createHandler')
     } catch (error) {
         console.log(error)
     }

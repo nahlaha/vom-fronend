@@ -51,7 +51,7 @@ onMounted(async () => {
                     <b-col>Actions</b-col>
                 </b-row>
                 <div class="pt-4" v-for="(user, i) in users" :key="user.id">
-                    <UserItem v-model:user="users[i]" />
+                    <UserItem v-model:user="users[i]" @updateGrid="getUsers"/>
                 </div>
             </div>
             <div class="overflow-auto">
@@ -59,7 +59,7 @@ onMounted(async () => {
             </div>
         </div>
     </b-container>
-    <CreateUser v-model:viewForm="viewCreateForm" />
+    <CreateUser v-model:viewForm="viewCreateForm" @createHandler="getUsers"/>
 </template>
 
 <style scoped>

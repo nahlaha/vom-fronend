@@ -8,7 +8,7 @@ interface Props {
     viewModal: boolean
 }
 const _viewModal = ref(false)
-const emit = defineEmits(['update:viewModal'])
+const emit = defineEmits(['update:viewModal','deleteHandler'])
 const props = defineProps<Props>()
 
 watch(props, () => {
@@ -19,6 +19,7 @@ async function deleteUser() {
     try {
         await deleteUserApi(props.userId)
         _viewModal.value = false
+        emit('deleteHandler');
     } catch (error) {
         console.log(error)
     }
