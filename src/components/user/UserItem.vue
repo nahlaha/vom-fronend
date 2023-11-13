@@ -16,15 +16,15 @@ const viewDeleteModal = ref(false)
 
 
 <template>
-    <b-row class="justify-content-md-center">
+    <b-row class="d-flex justify-content-start border-bottom">
         <b-col>{{ user.first_name }}</b-col>
         <b-col>{{ user.last_name }}</b-col>
         <b-col>{{ user.email }}</b-col>
         <b-col>{{ user.phone_number }}</b-col>
         <b-col>{{ user.description }}</b-col>
-        <b-col>
-            <b-button @click="viewEditForm = true">edit</b-button>
-            <b-button @click="viewDeleteModal = true">delete</b-button>
+        <b-col class="d-flex mb-2">
+            <b-button variant="primary" size="sm" class="me-1" @click="viewEditForm = true">edit</b-button>
+            <b-button variant="danger" size="sm" @click="viewDeleteModal = true">delete</b-button>
         </b-col>
     </b-row>
     <EditUser :user="props.user" :viewForm="viewEditForm" />
